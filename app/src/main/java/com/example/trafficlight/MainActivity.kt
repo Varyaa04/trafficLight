@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import java.io.Console
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -15,6 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+    var counter:Int =0
 
     @SuppressLint("ResourceType")
     fun SwitchClick(view: View)
@@ -22,25 +24,27 @@ class MainActivity : AppCompatActivity() {
         val redColor = findViewById<ImageView>(R.id.RedLight)
         val orangeColor = findViewById<ImageView>(R.id.OrangeLight)
         val greenColor = findViewById<ImageView>(R.id.GreenLight)
-        val orangeColorGreen = findViewById<ImageView>(R.id.OrangeLightGreen)
+       // val orangeColorGreen = findViewById<ImageView>(R.id.OrangeLightGreen)
 
-
-        if (redColor.visibility == View.VISIBLE)
+        if (redColor.visibility == View.VISIBLE )
         {
+            counter = 0
             redColor.visibility = View.INVISIBLE
-            orangeColorGreen.visibility = View.VISIBLE
+            orangeColor.visibility = View.VISIBLE
+
         }
-        else if(orangeColorGreen.visibility == View.VISIBLE)
+        else if(orangeColor.visibility == View.VISIBLE && counter == 0)
         {
-            orangeColorGreen.visibility = View.INVISIBLE
+            orangeColor.visibility = View.INVISIBLE
             greenColor.visibility = View.VISIBLE
         }
-        else if (greenColor.visibility == View.VISIBLE )
+        else if (greenColor.visibility == View.VISIBLE)
         {
+            counter = 1
             greenColor.visibility = View.INVISIBLE
             orangeColor.visibility = View.VISIBLE
         }
-        else if(orangeColor.visibility == View.VISIBLE)
+        else if(orangeColor.visibility == View.VISIBLE && counter == 1)
         {
             redColor.visibility = View.VISIBLE
             orangeColor.visibility = View.INVISIBLE
